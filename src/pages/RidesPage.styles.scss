@@ -1,0 +1,72 @@
+.rides-wrapper{
+  padding: 0.5rem 2rem;
+  background-color: var(--black400);
+  font-family: var(--inter-font);
+  height: calc(100vh - 70px);
+  overflow-y: hidden;
+
+  .rides-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .filters{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .4rem;
+    font-size: .9rem;
+    color: var(--gray100);
+    border-radius: 2rem;
+    transition: background-color .4s ease;
+    padding: .3rem 1rem;
+
+    &:hover{
+      background-color: rgba(128,128,128,.25);
+      cursor: pointer;
+    }
+  }
+
+  .ride-tabs{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+    color: var(--gray100);
+    padding: 1rem 0;
+
+    .tab{
+      cursor: pointer;
+      font-size: .96rem;
+      position: relative;
+
+      &::after{
+        position: absolute;
+        content: '';
+        top: 115%;
+        left: 0;
+        height: 2px;
+        width: 0;
+        border-radius: 1rem;
+        background-color: var(--gray300);
+        transition: width 0.4s ease-in;
+      }
+    }
+
+    .tab.active::after{
+      width: 100%;
+    }
+  }
+
+  .rides-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 0;
+    overflow-y: auto;
+    height: 92%;
+  }
+}

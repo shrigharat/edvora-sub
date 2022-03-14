@@ -1,0 +1,25 @@
+.app-header{
+  width: 100%;
+  background-color: var(--black900);
+  height: 70px;
+  
+  ul{
+    width: 100%;
+    list-style: none;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    color: var(--gray100);
+
+    .logo{
+      font-weight: 700;
+      font-size: 1.6rem;
+    }
+
+    .user{
+      font-family: var(--inter-font);
+    }
+  }
+}
