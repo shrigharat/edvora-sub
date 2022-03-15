@@ -9,7 +9,13 @@ const Rides = () => {
   const [activeTab, setactiveTab] = useState(0);
   const tabs = ["Nearest rides", "Upcoming rides", "Past rides"];
   const [showFilter, setShowFilter] = useState(false);
-  const { rides: ridesData } = useContext(RidesContext);
+  const {
+    rides: ridesData,
+    selectedState,
+    setSelectedState,
+    selectedCity,
+    setSelectedCity,
+  } = useContext(RidesContext);
   const ridesArray = [
     ridesData.nearestRides,
     ridesData.upcomingRides,
@@ -17,7 +23,7 @@ const Rides = () => {
   ];
   // const
 
-  console.log("Rides: ", ridesArray);
+  console.log({ selectedState, selectedCity });
 
   return (
     <div className="rides-wrapper">
@@ -46,9 +52,30 @@ const Rides = () => {
         </div>
       </div>
       <div className="rides-container">
-        {React.Children.toArray(
-          ridesArray[activeTab].map((ride) => <RideCard ride={ride} />)
-        )}
+        {!selectedState && selectedCity
+          ? React.Children.toArray(
+              ridesArray[activeTab]
+                .filter((ride) => ride.city === selectedCity)
+                .map((ride) => <RideCard ride={ride} />)
+            )
+          : selectedState
+          ? selectedCity
+            ? React.Children.toArray(
+                ridesArray[activeTab]
+                  .filter(
+                    (ride) =>
+                      ride.state === selectedState && ride.city === selectedCity
+                  )
+                  .map((ride) => <RideCard ride={ride} />)
+              )
+            : React.Children.toArray(
+                ridesArray[activeTab]
+                  .filter((ride) => ride.state === selectedState)
+                  .map((ride) => <RideCard ride={ride} />)
+              )
+          : React.Children.toArray(
+              ridesArray[activeTab].map((ride) => <RideCard ride={ride} />)
+            )}
       </div>
     </div>
   );

@@ -15,6 +15,9 @@ const RidesProvider = ({ children }) => {
   const [cities, setCities] = useState([]);
   const [user, setUser] = useState(undefined);
 
+  const [selectedState, setSelectedState] = useState("");
+  const [selectedCity, setSelectedCity] = useState("");
+
   const fetchData = async () => {
     try {
       const ridesRes = await axios.get(ridesURL);
@@ -25,9 +28,9 @@ const RidesProvider = ({ children }) => {
       const past = [],
         upcoming = [];
       let near = [];
-      const paths = {};
-      const statesObj = {};
-      const citiesArr = [];
+      const paths = {},
+        statesObj = {},
+        citiesArr = [];
       ridesRes.data.forEach((ride) => {
         //set the ride at distance key
         let minDiff = Number.MAX_SAFE_INTEGER;
@@ -85,6 +88,10 @@ const RidesProvider = ({ children }) => {
         cities,
         rides: { nearestRides, pastRides, upcomingRides },
         user,
+        selectedState,
+        setSelectedState,
+        selectedCity,
+        setSelectedCity,
       }}
     >
       {children}

@@ -3,9 +3,14 @@ import { RidesContext } from "../../contexts/ridesContext";
 import "./FilterPopup.styles.scss";
 
 const FilterPopup = () => {
-  const { states, cities } = useContext(RidesContext);
-  const [selectedState, setSelectedState] = useState(undefined);
-  const [selectedCity, setSelectedCity] = useState("");
+  const {
+    states,
+    cities,
+    selectedState,
+    setSelectedState,
+    selectedCity,
+    setSelectedCity,
+  } = useContext(RidesContext);
 
   return (
     <div className="filter-container">
@@ -23,7 +28,12 @@ const FilterPopup = () => {
         </select>
       </div>
       <div className="city-select">
-        <select name="" id="" placeholder="Select City">
+        <select
+          name=""
+          id=""
+          placeholder="Select City"
+          onChange={(e) => setSelectedCity(e.target.value)}
+        >
           {!selectedState
             ? cities.map((city) => <option value={city}>{city}</option>)
             : states &&
