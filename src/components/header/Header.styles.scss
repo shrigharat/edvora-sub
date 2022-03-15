@@ -1,9 +1,9 @@
-.app-header{
+.app-header {
   width: 100%;
   background-color: var(--black900);
   height: 70px;
-  
-  ul{
+
+  ul {
     width: 100%;
     list-style: none;
     padding: 1rem 2rem;
@@ -13,13 +13,29 @@
     margin: 0;
     color: var(--gray100);
 
-    .logo{
+    .logo {
       font-weight: 700;
       font-size: 1.6rem;
     }
 
-    .user{
+    .user {
       font-family: var(--inter-font);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+
+      .user-img-container {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+
+        .user-img {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+        }
+      }
     }
   }
 }

@@ -21,6 +21,7 @@
     border-radius: 2rem;
     transition: background-color .4s ease;
     padding: .3rem 1rem;
+    position: relative;
 
     &:hover{
       background-color: rgba(128,128,128,.25);
